@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palitos rítmicos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <style>
+        @font-face {
+            font-family: 'Boleh';
+            src: url('boleh/Boleh.ttf') format('truetype'),
+                url('boleh/Boleh.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        body {
+            font-family: 'Boleh', Arial, sans-serif;
+            background: #f7f7f7 url('Fondo-home.png.png') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            width: 100%;
+            background: rgba(255,255,255,0.85);
+            color: #fff;
+            padding: 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            height: 72px;
+        }
+        .navbar-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            padding: 0 24px;
+            height: 72px;
+            justify-content: space-between;
+        }
+        .navbar-left {
+            display: flex;
+            align-items: center;
+        }
+        .navbar-logo {
+            font-size: 1.2rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            color: #87CEEB;
+            text-decoration: none;
+            margin-right: 32px;
+            transition: color 0.2s;
+        }
+        .navbar-logo:hover {
+            color: #4682B4;
+        }
+        .navbar-menu {
+            position: relative;
+        }
+        .navbar-link {
+            color: #87CEEB;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            padding: 10px 18px;
+            border-radius: 6px;
+            transition: background 0.2s, color 0.2s;
+            cursor: pointer;
+            background: none;
+            border: none;
+            outline: none;
+        }
+        .navbar-link:hover, .navbar-link:focus {
+            background: rgba(255,255,255,0.1);
+            color: #4682B4;
+        }
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #fff;
+            min-width: 220px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+            border-radius: 8px;
+            display: none;
+            flex-direction: column;
+            margin-top: 6px;
+            z-index: 200;
+        }
+        .navbar-menu:hover .dropdown, .navbar-menu:focus-within .dropdown {
+            display: flex;
+        }
+        .dropdown-link {
+            color: #222;
+            text-decoration: none;
+            padding: 12px 20px;
+            font-size: 1rem;
+            border-radius: 6px;
+            transition: background 0.2s, color 0.2s;
+            white-space: nowrap;
+        }
+        .dropdown-link:hover {
+            background: #e0e7ff;
+            color: #6366f1;
+        }
+        .navbar-search {
+            display: flex;
+            align-items: center;
+        }
+        .navbar-search input[type="text"] {
+            padding: 7px 14px;
+            border-radius: 6px;
+            border: 1px solid #d1d5db;
+            font-size: 1rem;
+            outline: none;
+            transition: border 0.2s, box-shadow 0.2s;
+            background: #fff;
+            color: #222;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+        }
+        .navbar-search input[type="text"]:focus {
+            border: 1.5px solid #6366f1;
+            box-shadow: 0 2px 8px rgba(99,102,241,0.10);
+        }
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            background: rgba(255,255,255,0.7);
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            padding: 32px 24px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+        iframe {
+            width: 100%;
+            height: 220px;
+            border-radius: 10px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+            background: #e0e7ff;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-content">
+            <div class="navbar-left">
+                <a href="index.html" class="navbar-logo" style="padding: 0; display: flex; align-items: center;">
+                    <img src="Home.png" alt="Home" style="height: 48px; width: auto; display: block;" />
+                </a>
+                <div class="navbar-menu">
+                    <button class="navbar-link">Menu ▼</button>
+                    <div class="dropdown">
+                        <a class="dropdown-link" href="spanish-videos.html">Libro de Música</a>
+                        <a class="dropdown-link" href="english-videos.html">Music Book</a>
+                        <a class="dropdown-link" href="moving-song.html">Moving Song</a>
+                        <a class="dropdown-link" href="color-instrument.html">Color Instrument</a>
+                        <a class="dropdown-link" href="cantojuegos.html">A cantar</a>
+                        <a class="dropdown-link" href="puerto-rico.html">Puerto Rico</a>
+                        <a class="dropdown-link" href="flauta-dulce.html">Flauta Dulce</a>
+                        <a class="dropdown-link" href="palitos.html">Palitos</a>
+                    </div>
+                </div>
+            </div>
+            <form class="navbar-search" action="search-results.html" method="get" autocomplete="off">
+                <input type="text" placeholder="Buscar..." name="q" />
+            </form>
+        </div>
+    </nav>
+    <div class="container">
+        <h1 style="text-align:center;">Palitos rítmicos</h1>
+        <div class="video-grid">
+            <iframe src="https://www.youtube.com/embed/PWCKssuHsVY" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/AVEg3w5-4As" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/PWCKssuHsVY" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/Bc9mzP1anPc" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/Bc9mzP1anPc" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/J9OGAhWgWxU" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/FLxFpYnN0Cc" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/FLxFpYnN0Cc" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/FLxFpYnN0Cc" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/2FK9R2CwDas" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/2FK9R2CwDas" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/NkVF-myPdOI" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/8s1wH1MFuqM" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/8s1wH1MFuqM" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/7ZFWTuBhhQc" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/7ZFWTuBhhQc" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/90vtwtL03zw" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/90vtwtL03zw" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/YFWSyEiK_rs" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/YFWSyEiK_rs" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/A1T1Tnn8TBs" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/A1T1Tnn8TBs" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/xSYtyubyGPo" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/aUtWxAgt41g" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/n-qcsO5WuzU" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/n-qcsO5WuzU" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/bih7L_p--fY" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/bih7L_p--fY" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/JZBy1LcrW7M" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/BsWgOsL8apE" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/R7FVspAo00o" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/NddarwZDNJA" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/pXL5bNWtH74" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/BzBBVN2JXHM" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/sR9K-KaeM4A" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/B2W-OrX5ni4" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/rxhJvNkrn90" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/3OlyoKLfeDg" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/Q7fArOwnr5c" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/-zY3EISxBcM" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/1Z6WHmhmXiI" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/IXCuPJ5SneY" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/IXCuPJ5SneY" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+</body>
+</html> 

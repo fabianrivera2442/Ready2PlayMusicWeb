@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Libro de Música - Videos</title>
+    <style>
+@font-face {
+    font-family: 'Boleh';
+    src: url('boleh/Boleh.ttf') format('truetype'),
+         url('boleh/Boleh.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+body {
+    font-family: 'Boleh', Arial, sans-serif;
+    background: #f7f7f7 url('Salon-de-clase.png.png') no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+}
+    .navbar {
+        width: 100%;
+        background: rgba(255,255,255,0.85);
+        color: #fff;
+        padding: 0;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        height: 72px;
+    }
+    .navbar-content {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        padding: 0 24px;
+        height: 72px;
+        justify-content: space-between;
+    }
+    .navbar-left {
+        display: flex;
+        align-items: center;
+    }
+    .navbar-logo {
+        font-size: 1.2rem;
+        font-weight: bold;
+        letter-spacing: 1px;
+        color: #87CEEB;
+        text-decoration: none;
+        margin-right: 32px;
+        transition: color 0.2s;
+    }
+    .navbar-logo:hover {
+        color: #4682B4;
+    }
+    .navbar-menu {
+        position: relative;
+    }
+    .navbar-link {
+        color: #87CEEB;
+        text-decoration: none;
+        font-size: 1rem;
+        font-weight: 500;
+        padding: 10px 18px;
+        border-radius: 6px;
+        transition: background 0.2s, color 0.2s;
+        cursor: pointer;
+        background: none;
+        border: none;
+        outline: none;
+    }
+    .navbar-link:hover, .navbar-link:focus {
+        background: rgba(255,255,255,0.1);
+        color: #4682B4;
+    }
+    .dropdown {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: #fff;
+        min-width: 220px;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+        border-radius: 8px;
+        display: none;
+        flex-direction: column;
+        margin-top: 6px;
+        z-index: 200;
+    }
+    .navbar-menu:hover .dropdown, .navbar-menu:focus-within .dropdown {
+        display: flex;
+    }
+    .dropdown-link {
+        color: #222;
+        text-decoration: none;
+        padding: 12px 20px;
+        font-size: 1rem;
+        border-radius: 6px;
+        transition: background 0.2s, color 0.2s;
+        white-space: nowrap;
+    }
+    .dropdown-link:hover {
+        background: #e0e7ff;
+        color: #6366f1;
+    }
+    .navbar-search {
+        display: flex;
+        align-items: center;
+    }
+    .navbar-search input[type="text"] {
+        padding: 7px 14px;
+        border-radius: 6px;
+        border: 1px solid #d1d5db;
+        font-size: 1rem;
+        outline: none;
+        transition: border 0.2s, box-shadow 0.2s;
+        background: #fff;
+        color: #222;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    }
+    .navbar-search input[type="text"]:focus {
+        border: 1.5px solid #6366f1;
+        box-shadow: 0 2px 8px rgba(99,102,241,0.10);
+    }
+    .container {
+        max-width: 1100px;
+        margin: 40px auto;
+        background: transparent;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        padding: 32px 24px;
+    }
+    h1 {
+        text-align: center;
+        margin-bottom: 32px;
+    }
+    .video-list {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+    }
+    .video-row {
+        display: flex;
+        align-items: center;
+        background: rgba(255,255,255,0.3);
+        border-radius: 10px;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+        padding: 18px 18px 18px 0;
+        min-height: 160px;
+    }
+    .video-info {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        margin: 0 auto 0 0;
+        margin-left: 10%;
+    }
+    .page-number {
+        background: #fff;
+        color: #222;
+        font-size: 1.1rem;
+        font-weight: bold;
+        border-radius: 8px;
+        padding: 6px 18px;
+        margin-bottom: 10px;
+        display: inline-block;
+        border: 2px solid #e5e7eb;
+    }
+    .video-title {
+        font-size: 1.7rem;
+        color: #222;
+        font-weight: 700;
+        text-align: center;
+        line-height: 1.3;
+    }
+    .video-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+    .video-content iframe {
+        width: 100%;
+        max-width: 340px;
+        aspect-ratio: 16/9;
+        border: none;
+        border-radius: 6px;
+        background: #000;
+    }
+    .video-placeholder {
+        width: 100%;
+        max-width: 340px;
+        aspect-ratio: 16/9;
+        background: #dbeafe;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #6366f1;
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 8px;
+    }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-content">
+            <div class="navbar-left">
+                <a href="index.html" class="navbar-logo" style="padding: 0; display: flex; align-items: center;">
+                    <img src="Home.png" alt="Home" style="height: 48px; width: auto; display: block;" />
+                </a>
+                <div class="navbar-menu">
+                    <button class="navbar-link">Menu ▼</button>
+                    <div class="dropdown">
+                        <a class="dropdown-link" href="spanish-videos.html">Libro de Música</a>
+                        <a class="dropdown-link" href="english-videos.html">Music Book</a>
+                        <a class="dropdown-link" href="moving-song.html">Moving Song</a>
+                        <a class="dropdown-link" href="color-instrument.html">Color Instrument</a>
+                        <a class="dropdown-link" href="cantojuegos.html">A cantar</a>
+                        <a class="dropdown-link" href="puerto-rico.html">Puerto Rico</a>
+                        <a class="dropdown-link" href="flauta-dulce.html">Flauta Dulce</a>
+                    </div>
+                </div>
+            </div>
+            <form class="navbar-search" action="search-results.html" method="get" autocomplete="off">
+                <input type="text" placeholder="Buscar..." name="q" />
+            </form>
+        </div>
+    </nav>
+    <div class="container">
+        <h1>Libro de Música - Videos</h1>
+        <div class="video-list">
+            <!-- 1 -->
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="page-number">Pag 2</div>
+                    <div class="video-title">¿Qué es el Pulso Fijo? Descúbrelo con FA, el Robot Musical</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/56eqDpf-fQs" allowfullscreen></iframe>
+                </div>
+            </div>
+            <!-- 2 -->
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="page-number">Pag 3</div>
+                    <div class="video-title">Conecta los Instrumentos al Pulso Fijo | Aprende la Importancia del Beat</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/aBGlgpcgJIY" allowfullscreen></iframe>
+                </div>
+            </div>
+            <!-- 3 -->
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="page-number">Pag 4</div>
+                    <div class="video-title">Reto #1: Aprende a Leer Música con Pre-Notación</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/CPPvNxJnAxk" allowfullscreen></iframe>
+                </div>
+            </div>
+            <!-- 4 -->
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="page-number">Pag 4</div>
+                    <div class="video-title">Refuerza tu Habilidad de Leer Música con Fa, el Robot Musical RETO #2</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/-mj0zCf0ZI0" allowfullscreen></iframe>
+                </div>
+            </div>
+            <!-- 5 -->
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="page-number">Pag 4</div>
+                    <div class="video-title">¡Aprende a Leer Música de Manera Divertida! 🎶 | Pulso Fijo para Niños</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/MgGxxgWUfZg" allowfullscreen></iframe>
+                </div>
+            </div>
+            <!-- 6 -->
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="page-number">Pag 5</div>
+                    <div class="video-title">Aprende los Ritmos Largos con Robot FA: Negra, Blanca y Redonda | Música Fácil y Divertida</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/EWWbtdODUaE" allowfullscreen></iframe>
+                </div>
+            </div>
+            <!-- 7 -->
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="page-number">Pag 5.1</div>
+                    <div class="video-title">¡Descubre el Ritmo! Colorea los Sonidos con Corazones ❤️🖍️ (Actividad Guiada)</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/ZRzpfgB3wdQ" allowfullscreen></iframe>
+                </div>
+            </div>
+            <!-- 8 -->
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="page-number">Pag 7</div>
+                    <div class="video-title">Palitos - Pulso Fijo - Pentagrama</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/BzBBVN2JXHM" allowfullscreen></iframe>
+                </div>
+            </div>
+            <!-- 9 -->
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="page-number">Pag 8</div>
+                    <div class="video-title">Blancas (Pre Notación)</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/2FK9R2CwDas" allowfullscreen></iframe>
+                </div>
+            </div>
+            <!-- 10 -->
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="page-number">Pag 9</div>
+                    <div class="video-title">Blancas (Pentagrama)</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/sR9K-KaeM4A" allowfullscreen></iframe>
+                </div>
+            </div>
+            <!-- 11 -->
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="page-number">Pag 10</div>
+                    <div class="video-title">Redonda (Pre Notación)</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/8s1wH1MFuqM" allowfullscreen></iframe>
+                </div>
+            </div>
+            <!-- 12 -->
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="page-number">Pag 11</div>
+                    <div class="video-title">Redonda (Pentagrama)</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/B2W-OrX5ni4" allowfullscreen></iframe>
+                </div>
+            </div>
+            <!-- 13 -->
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="page-number">Repaso 01</div>
+                    <div class="video-title">Negras, Blandas y Redondas (Pentagrama)</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/rxhJvNkrn90" allowfullscreen></iframe>
+                </div>
+            </div>
+            <!-- 14 -->
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="page-number">Repaso 02</div>
+                    <div class="video-title">I'm A Pirate Forever - Pirate Original Song</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/ApMyQWpLMAk" allowfullscreen></iframe>
+                </div>
+            </div>
+            <!-- 15 -->
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="page-number">Pag 14</div>
+                    <div class="video-title">Corcheas (Pre Notación)</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/90vtwtL03zw" allowfullscreen></iframe>
+                </div>
+            </div>
+            <!-- 16 -->
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="page-number">Pag 15</div>
+                    <div class="video-title">Corcheas (Pentagrama)</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/Q7fArOwnr5c" allowfullscreen></iframe>
+                </div>
+            </div>
+            <!-- 17 -->
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="page-number">Pag 16</div>
+                    <div class="video-title">Semicorcheas (Pre Notación)</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/YFWSyEiK_rs" allowfullscreen></iframe>
+                </div>
+            </div>
+            <!-- 18 -->
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="page-number">Pag 17</div>
+                    <div class="video-title">Semicorcheas (Pentagrama)</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/1Z6WHmhmXiI" allowfullscreen></iframe>
+                </div>
+            </div>
+            <!-- 19 -->
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="page-number">Repaso</div>
+                    <div class="video-title">Negras, Corcheas, Semicorcheas (Pentagrama)</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/IXCuPJ5SneY" allowfullscreen></iframe>
+                </div>
+            </div>
+            <!-- 20 -->
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="page-number">Repaso 2</div>
+                    <div class="video-title">Echo Time (Notación)</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/xSYtyubyGPo" allowfullscreen></iframe>
+                </div>
+            </div>
+            <!-- 21 -->
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="page-number">Repaso 3</div>
+                    <div class="video-title">Rhythm Exercise - Notación</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/RC0biHOzdfc" allowfullscreen></iframe>
+                </div>
+            </div>
+            <!-- 22 -->
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="page-number">Repaso 4</div>
+                    <div class="video-title">Barbie Musical Rhythm Play Along</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/vsFbXXaa4zE" allowfullscreen></iframe>
+                </div>
+            </div>
+            <!-- 23 -->
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="page-number">Repaso 5</div>
+                    <div class="video-title">Nutcracker Sugar Plum Fairy</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/1x659LHK7Wg" allowfullscreen></iframe>
+                </div>
+            </div>
+            <!-- 24 -->
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="page-number">Pag 23</div>
+                    <div class="video-title">Silencio de Negra (Pre Notación)</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/FLxFpYnN0Cc" allowfullscreen></iframe>
+                </div>
+            </div>
+            <!-- 25 -->
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="page-number">Pag 24 & 25</div>
+                    <div class="video-title">Silencio de Negra (Pentagrama)</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/bih7L_p--fY" allowfullscreen></iframe>
+                </div>
+            </div>
+            <!-- 26 -->
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="page-number">Pag 26</div>
+                    <div class="video-title">Silencio de Blanca (Pre Notación)</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/NkVF-myPdOI" allowfullscreen></iframe>
+                </div>
+            </div>
+            <!-- 27 -->
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="page-number">Pag 27</div>
+                    <div class="video-title">Silencio de Blanca (Pentagrama)</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/R7FVspAo00o" allowfullscreen></iframe>
+                </div>
+            </div>
+            <!-- 28 -->
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="page-number">Pag 45</div>
+                    <div class="video-title">Xylophone - Redonda (Pentagrama)</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/dyRAMLYgBYw" allowfullscreen></iframe>
+                </div>
+            </div>
+            <!-- 29 -->
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="page-number">Pag 46</div>
+                    <div class="video-title">Xylophone - Blanca (Pentagrama)</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/WVpA03htqz8" allowfullscreen></iframe>
+                </div>
+            </div>
+            <!-- 30 -->
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="page-number">Pag 47</div>
+                    <div class="video-title">Xylophone - Negra (Pentagrama)</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/ya3I-uoNv2s" allowfullscreen></iframe>
+                </div>
+            </div>
+            <!-- 31 -->
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="page-number">Pag 48</div>
+                    <div class="video-title">Xylophone - Patrón Rítmico (Notación)</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/gnjQKvmL9do" allowfullscreen></iframe>
+                </div>
+            </div>
+            <!-- 32 -->
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="page-number">Pag 49</div>
+                    <div class="video-title">Mary Had a Little Lamb</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/TvboSeuRbUQ" allowfullscreen></iframe>
+                </div>
+            </div>
+            <!-- 33 -->
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="page-number">Pag 50 & 51</div>
+                    <div class="video-title">Twinkle Twinkle Little Star</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/Eyprk35a8rM" allowfullscreen></iframe>
+                </div>
+            </div>
+            <!-- 34 -->
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="page-number">Pag 54</div>
+                    <div class="video-title">Ode to Joy</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/udvbrSeb5yE" allowfullscreen></iframe>
+                </div>
+            </div>
+            <!-- 35 -->
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="page-number">Pag 55</div>
+                    <div class="video-title">London Bridge Is Falling Down</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/s-ldEJPgzY0" allowfullscreen></iframe>
+                </div>
+            </div>
+            <!-- 36 -->
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="page-number">Pag 56</div>
+                    <div class="video-title">Frère Jacques - Single</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/Lou8E1rbf9U" allowfullscreen></iframe>
+                </div>
+            </div>
+            <!-- 37 -->
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="page-number">Pag 56</div>
+                    <div class="video-title">Frère Jacques</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/YaK6Q_2K3Ak" allowfullscreen></iframe>
+                </div>
+            </div>
+            <!-- 38 -->
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="page-number">Pag 57</div>
+                    <div class="video-title">The Wheels on the Bus</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/cHUUWtSlW8U" allowfullscreen></iframe>
+                </div>
+            </div>
+            <!-- 39 -->
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="page-number">Pag 58 & 59</div>
+                    <div class="video-title">Jingle Bells</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/7yX6O99xhjw" allowfullscreen></iframe>
+                </div>
+            </div>
+            <!-- 40 -->
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="page-number">Pag 60 & 61</div>
+                    <div class="video-title">Old MacDonald Had A Farm</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/FlT7AZSj7Us" allowfullscreen></iframe>
+                </div>
+            </div>
+            <!-- 41 -->
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="page-number">Pag 62</div>
+                    <div class="video-title">Pin Pon es un Muñeco</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/G-IDpF8Oly4" allowfullscreen></iframe>
+                </div>
+            </div>
+            <!-- 42 -->
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="page-number">Pag 64</div>
+                    <div class="video-title">Fives Little Monkeys</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/Zo8qAzLVgj4" allowfullscreen></iframe>
+                </div>
+            </div>
+            <!-- 43 -->
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="page-number">Pag 65</div>
+                    <div class="video-title">Johny Johny, Yes Papa - Color Handbells</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/fFuNEsCjtWc" allowfullscreen></iframe>
+                </div>
+            </div>
+            <!-- 44 -->
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="page-number">Pag 66 & 67</div>
+                    <div class="video-title">Humpty Dumpty</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/o9BOq5fgGxI" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

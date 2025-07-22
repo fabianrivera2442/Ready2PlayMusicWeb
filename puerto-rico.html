@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puerto Rico - Videos</title>
+    <style>
+@font-face {
+    font-family: 'Boleh';
+    src: url('boleh/Boleh.ttf') format('truetype'),
+         url('boleh/Boleh.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+        body {
+            font-family: 'Boleh', Arial, sans-serif;
+            background: #f7f7f7 url('Puertorico-web-image.png') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+        }
+        * {
+            font-family: 'Boleh', Arial, sans-serif;
+        }
+        .navbar {
+            width: 100%;
+            background: rgba(255,255,255,0.85);
+            color: #fff;
+            padding: 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            height: 72px;
+        }
+        .navbar-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            padding: 0 24px;
+            height: 72px;
+            justify-content: space-between;
+        }
+        .navbar-left {
+            display: flex;
+            align-items: center;
+        }
+        .navbar-logo {
+            font-size: 1.2rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            color: #87CEEB;
+            text-decoration: none;
+            margin-right: 32px;
+            transition: color 0.2s;
+        }
+        .navbar-logo:hover {
+            color: #4682B4;
+        }
+        .navbar-menu {
+            position: relative;
+        }
+        .navbar-link {
+            color: #87CEEB;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            padding: 10px 18px;
+            border-radius: 6px;
+            transition: background 0.2s, color 0.2s;
+            cursor: pointer;
+            background: none;
+            border: none;
+            outline: none;
+        }
+        .navbar-link:hover, .navbar-link:focus {
+            background: rgba(255,255,255,0.1);
+            color: #4682B4;
+        }
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #fff;
+            min-width: 220px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+            border-radius: 8px;
+            display: none;
+            flex-direction: column;
+            margin-top: 6px;
+            z-index: 200;
+        }
+        .navbar-menu:hover .dropdown, .navbar-menu:focus-within .dropdown {
+            display: flex;
+        }
+        .dropdown-link {
+            color: #222;
+            text-decoration: none;
+            padding: 12px 20px;
+            font-size: 1rem;
+            border-radius: 6px;
+            transition: background 0.2s, color 0.2s;
+            white-space: nowrap;
+        }
+        .dropdown-link:hover {
+            background: #e0e7ff;
+            color: #6366f1;
+        }
+        .navbar-search {
+            display: flex;
+            align-items: center;
+        }
+        .navbar-search input[type="text"] {
+            padding: 7px 14px;
+            border-radius: 6px;
+            border: 1px solid #d1d5db;
+            font-size: 1rem;
+            outline: none;
+            transition: border 0.2s, box-shadow 0.2s;
+            background: #fff;
+            color: #222;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+        }
+        .navbar-search input[type="text"]:focus {
+            border: 1.5px solid #6366f1;
+            box-shadow: 0 2px 8px rgba(99,102,241,0.10);
+        }
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            padding: 32px 24px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        .video-list {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+        .video-row {
+            display: flex;
+            align-items: center;
+            background: rgba(255,255,255,0.5);
+            border-radius: 10px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+            padding: 18px 18px 18px 0;
+            min-height: 160px;
+        }
+        .video-info {
+            min-width: 320px;
+            max-width: 420px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            height: 100%;
+            margin-right: 40px;
+            padding-left: 40px;
+        }
+        .video-title {
+            font-size: 1.7rem;
+            color: #222;
+            font-weight: 700;
+            text-align: left;
+            line-height: 1.3;
+            margin-left: 0;
+        }
+        .video-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+        .video-content iframe {
+            width: 100%;
+            max-width: 340px;
+            aspect-ratio: 16/9;
+            border: none;
+            border-radius: 6px;
+            background: #000;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-content">
+            <div class="navbar-left">
+                <a href="index.html" class="navbar-logo" style="padding: 0; display: flex; align-items: center;">
+                    <img src="Home.png" alt="Home" style="height: 48px; width: auto; display: block;" />
+                </a>
+                <div class="navbar-menu">
+                    <button class="navbar-link">Menu ▼</button>
+                    <div class="dropdown">
+                        <a class="dropdown-link" href="spanish-videos.html">Libro de Música</a>
+                        <a class="dropdown-link" href="english-videos.html">Music Book</a>
+                        <a class="dropdown-link" href="moving-song.html">Moving Song</a>
+                        <a class="dropdown-link" href="color-instrument.html">Color Instrument</a>
+                        <a class="dropdown-link" href="cantojuegos.html">A cantar</a>
+                        <a class="dropdown-link" href="puerto-rico.html">Puerto Rico</a>
+                        <a class="dropdown-link" href="flauta-dulce.html">Flauta Dulce</a>
+                        <a class="dropdown-link" href="palitos.html">Palitos</a>
+                    </div>
+                </div>
+            </div>
+            <form class="navbar-search" action="search-results.html" method="get" autocomplete="off">
+                <input type="text" placeholder="Buscar..." name="q" />
+            </form>
+        </div>
+    </nav>
+    <h1 style="text-align:center; margin:40px 0 32px 0;">Puerto Rico</h1>
+    <div class="video-list" style="max-width:900px; margin:0 auto 40px auto;">
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="video-title">Plena Seguidor (Pre Notación)</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/QT904B-CmBU" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="video-title">Plena Punteador (Pre Notación)</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/yPu1Sw0SFzY" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="video-title">Plena Pandero (seguidor) Notación</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/rpHT9dFRhck" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="video-title">Plena Pandero (Punteador) Notación</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/b8AvTFO8nqs" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="video-title">Plena Pandero (requinto) Notación</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/nhqi6XlXx34" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="video-title">Plena Aprende a tocar Plena 3 Notación</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/gfHMVQHnrs4" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="video-title">Plena Requinto Challenge 1</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/czcXAB0y3lU" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="video-title">Plena Requinto Challenge 2</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/_QN5iirb6dY" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="video-title">Plena Requinto Challenge 3</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/REMbvOHhKzs" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="video-title">Plena Guiro Plena Notación</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/BiKvn6_vYlc" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="video-title">PlenaConga Plena Notación</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/ns9kwSt30UU" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="video-title">Bomba Baile Sica Hombre</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/p6O5UE_Zc20" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="video-title">Bomba Baile Sica Mujer</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/H9-1b_zbSEs" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="video-title">Bomba Barril Sica 120bpm Notación</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/0musieCckw4" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="video-title">Bomba Cua- Sica 120bpm Notación</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/o_JfaXx483s" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="video-title">Bomba Barril Holande 120bpm Notación</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/fm4buLFCK_A" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="video-title">Bomba Cua- Holande 120bpm Notación</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/EqhqQQv8DLM" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="video-title">Bomba Barril Seis Corrido 120bpm Notación</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/hGdR2bu-INA" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="video-title">Bomba Cua- Seis Corrido 120bpm Notación</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/euY57NF5KYg" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="video-title">Bomba Barril Yuba 110bpm Notación</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/XNk5yTmnLCg" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="video-title">Bomba Cua- Yuba 120bpm Notación</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/kxgQQ9ADYjo" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="video-title">Bomba Barril Cuembe 110bpm Notación</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/_XBo5EO9ajY" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="video-row">
+                <div class="video-info">
+                    <div class="video-title">Bomba Cua- Cuembe 120bpm Notación</div>
+                </div>
+                <div class="video-content">
+                    <iframe src="https://www.youtube.com/embed/AQ2n-1FZtMs" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ready 2 Play Music Books</title>
+    <style>
+@font-face {
+    font-family: 'Boleh';
+    src: url('boleh/Boleh.ttf') format('truetype'),
+         url('boleh/Boleh.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+body {
+    font-family: 'Boleh', Arial, sans-serif;
+    background: #f7f7f7 url('Fondo-home.png.png') no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+}
+        .container {
+            max-width: 700px;
+            margin: 40px auto;
+            background: rgba(255,255,255,0.7);
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            padding: 32px 24px;
+        }
+        .book-section {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+        .book-section img {
+            width: 140px;
+            height: auto;
+            border-radius: 8px;
+            margin-right: 24px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.10);
+        }
+        .book-info {
+            flex: 1;
+        }
+        .book-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        .book-buttons {
+            margin-top: 12px;
+        }
+        .book-buttons a {
+            display: inline-block;
+            margin-right: 12px;
+            padding: 10px 20px;
+            background: #0070f3;
+            color: #fff;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .book-buttons a:hover {
+            background: #005bb5;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-content">
+            <div class="navbar-left">
+                <a href="index.html" class="navbar-logo" style="padding: 0; display: flex; align-items: center;">
+                    <img src="Home.png" alt="Home" style="height: 48px; width: auto; display: block;" />
+                </a>
+                <div class="navbar-menu">
+                    <button class="navbar-link">Menu ▼</button>
+                    <div class="dropdown">
+                        <a class="dropdown-link" href="spanish-videos.html">Libro de Música</a>
+                        <a class="dropdown-link" href="english-videos.html">Music Book</a>
+                        <a class="dropdown-link" href="moving-song.html">Moving Song</a>
+                        <a class="dropdown-link" href="color-instrument.html">Color Instrument</a>
+                        <a class="dropdown-link" href="cantojuegos.html">A cantar</a>
+                        <a class="dropdown-link" href="puerto-rico.html">Puerto Rico</a>
+                        <a class="dropdown-link" href="flauta-dulce.html">Flauta Dulce</a>
+                        <a class="dropdown-link" href="palitos.html">Palitos</a>
+                    </div>
+                </div>
+            </div>
+            <form class="navbar-search" action="search-results.html" method="get" autocomplete="off">
+                <input type="text" placeholder="Buscar..." name="q" />
+            </form>
+        </div>
+    </nav>
+    <div style="width: 100vw; height: 50vh; max-width: 100%; max-height: 50vh; overflow: hidden; display: flex; align-items: flex-end; justify-content: center; margin: 0 auto 0 auto;">
+        <img src="Bienvenida pagina web5.png" alt="Bienvenida" style="width: 100vw; height: 100%; object-fit: cover; object-position: bottom; display: block;">
+    </div>
+    <div class="main-wrapper">
+        <!-- Spanish Book Section -->
+        <div class="book-box">
+            <div class="book-section">
+                <img src="Ready 2 Play Music Book.png" alt="Ready 2 Play Music Book Spanish Cover">
+                <div class="book-info">
+                    <div class="book-title" style="margin-bottom: 0;">
+                        Ready 2 Play Music Book (Español)
+                    </div>
+                    <div class="book-desc" style="font-size: 0.95rem; color: #555; margin-top: 0.1em; margin-bottom: 0.5em; line-height: 1.1;">Videos dinámicos e interactivos dirigidos para hacer con el Libro</div>
+                    <div class="book-buttons">
+                        <a href="https://www.amazon.com/-/es/gp/product/B0D8BQY3L3/ref=sw_img_1?smid=&psc=1" target="_blank">Buy on Amazon</a>
+                        <a href="spanish-videos.html" id="spanish-music-book-btn">Videos</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- English Book Section -->
+        <div class="book-box">
+            <div class="book-section">
+                <img src="Ready 2 Play Music Book.png" alt="Ready 2 Play Music Book English Cover">
+                <div class="book-info">
+                    <div class="book-title" style="margin-bottom: 0;">
+                        Ready 2 Play Music Book (English)
+                    </div>
+                    <div class="book-desc" style="font-size: 0.95rem; color: #555; margin-top: 0.1em; margin-bottom: 0.5em; line-height: 1.1;">Dynamic and interactive videos designed to use with the Book</div>
+                    <div class="book-buttons">
+                        <a href="https://www.amazon.com/-/es/gp/product/B0D8KKY3GT/ref=sw_img_1?smid=&psc=1" target="_blank">Buy on Amazon</a>
+                        <a href="english-videos.html" id="english-music-book-btn">Videos</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Sección de los seis botones grandes (nueva versión robusta) -->
+    <div style="width:100vw; overflow-x:auto; margin:0; padding:0;">
+      <div style="display:grid; grid-template-columns:repeat(6,1fr); width:1920px; min-width:1920px; max-width:1920px;">
+        <a href="moving-song.html"><img src="Notas musicales redes sociales/Moving song.png" class="boton-grid-img" style="width:100%; display:block; border-radius:18px;"></a>
+        <a href="color-instrument.html"><img src="Notas musicales redes sociales/Color Instruments.png" class="boton-grid-img" style="width:100%; display:block; border-radius:18px;"></a>
+        <a href="cantojuegos.html"><img src="Notas musicales redes sociales/A Cantar.png" class="boton-grid-img" style="width:100%; display:block; border-radius:18px;"></a>
+        <a href="puerto-rico.html"><img src="Notas musicales redes sociales/Puerto Rico Boton.png" class="boton-grid-img" style="width:100%; display:block; border-radius:18px;"></a>
+        <a href="flauta-dulce.html"><img src="Notas musicales redes sociales/Flauta dulce Boton.png" class="boton-grid-img" style="width:100%; display:block; border-radius:18px;"></a>
+        <a href="palitos.html"><img src="Notas musicales redes sociales/Palitos Image Boton.png" class="boton-grid-img" style="width:100%; display:block; border-radius:18px;"></a>
+      </div>
+    </div>
+    <!-- Social Media Section - Notas musicales individuales -->
+    <div style="width: 100vw; display: flex; justify-content: center; align-items: flex-end; gap: 1vw; margin: 32px 0 0 0; flex-wrap: wrap;">
+        <a href="https://youtube.com/@ready2playmusic?si=sJPFT5q886B8o13w" target="_blank" title="YouTube">
+            <img src="Notas musicales redes sociales/DoYoutube.png" alt="YouTube" class="nota-social" />
+        </a>
+        <a href="https://www.amazon.com/dp/B0D8BQY3L3" target="_blank" title="Amazon Español">
+            <img src="Notas musicales redes sociales/Re Amazon.png" alt="Amazon Español" class="nota-social" />
+        </a>
+        <a href="https://www.amazon.com/dp/B0D8KKY3GT" target="_blank" title="Amazon Inglés">
+            <img src="Notas musicales redes sociales/Mi Amazon.png" alt="Amazon Inglés" class="nota-social" />
+        </a>
+        <a href="https://www.teacherspayteachers.com/Store/Ready-2-Play-Music" target="_blank" title="Teachers Pay Teachers">
+            <img src="Notas musicales redes sociales/Fa TPT.png" alt="Teachers Pay Teachers" class="nota-social" />
+        </a>
+        <a href="https://www.tiktok.com/@ready2playmusic" target="_blank" title="TikTok">
+            <img src="Notas musicales redes sociales/Sol Tiktok.png" alt="TikTok" class="nota-social" />
+        </a>
+        <a href="https://www.facebook.com/ready2playmusic?mibextid=kFxxJD" target="_blank" title="Facebook">
+            <img src="Notas musicales redes sociales/La Facebook.png" alt="Facebook" class="nota-social" />
+        </a>
+        <a href="https://www.instagram.com/ready2playmusic?igsh=MTU1enlqa3FrY213ag%3D%3D&utm_source=qr" target="_blank" title="Instagram">
+            <img src="Notas musicales redes sociales/SiInstagram.png" alt="Instagram" class="nota-social" />
+        </a>
+        <a href="#top" title="Ir arriba">
+            <img src="Notas musicales redes sociales/DoHome.png" alt="Ir arriba" class="nota-social" />
+        </a>
+    </div>
+    <style>
+    .grid-6-thumbs {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 0;
+        width: 1920px;
+        min-width: 1920px;
+        max-width: 1920px;
+        justify-items: center;
+        align-items: end;
+        box-sizing: border-box;
+    }
+    .thumbnail-img-btn {
+        background: none !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        outline: none !important;
+    }
+    .thumbnail-img-btn:focus {
+        outline: none !important;
+        border: none !important;
+        box-shadow: none !important;
+    }
+    .thumbnail-img-btn img {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        height: auto;
+        border-radius: 18px;
+        box-shadow: none !important;
+        transition: transform 0.2s;
+        background: transparent;
+        display: block;
+        border: none !important;
+        outline: none !important;
+    }
+    .thumbnail-img-btn img:hover {
+        transform: scale(1.08) translateY(-10px);
+        box-shadow: none !important;
+        z-index: 2;
+        border: none !important;
+        outline: none !important;
+    }
+    .container.center-thumbnails {
+        overflow-x: auto !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        width: 100vw !important;
+        max-width: 100vw !important;
+        box-sizing: border-box;
+    }
+    .navbar {
+        width: 100%;
+        background: rgba(255,255,255,0.85);
+        color: #fff;
+        padding: 0;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        height: 72px;
+    }
+    .navbar-content {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        padding: 0 24px;
+        height: 72px;
+        justify-content: space-between;
+    }
+    .navbar-left {
+        display: flex;
+        align-items: center;
+    }
+    .navbar-logo {
+        font-size: 1.2rem;
+        font-weight: bold;
+        letter-spacing: 1px;
+        color: #87CEEB;
+        text-decoration: none;
+        margin-right: 32px;
+        transition: color 0.2s;
+    }
+    .navbar-logo:hover {
+        color: #4682B4;
+    }
+    .navbar-menu {
+        position: relative;
+    }
+    .navbar-link {
+        color: #87CEEB;
+        text-decoration: none;
+        font-size: 1rem;
+        font-weight: 500;
+        padding: 10px 18px;
+        border-radius: 6px;
+        transition: background 0.2s, color 0.2s;
+        cursor: pointer;
+        background: none;
+        border: none;
+        outline: none;
+    }
+    .navbar-link:hover, .navbar-link:focus {
+        background: rgba(255,255,255,0.1);
+        color: #4682B4;
+    }
+    .dropdown {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: #fff;
+        min-width: 220px;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+        border-radius: 8px;
+        display: none;
+        flex-direction: column;
+        margin-top: 6px;
+        z-index: 200;
+    }
+    .navbar-menu:hover .dropdown, .navbar-menu:focus-within .dropdown {
+        display: flex;
+    }
+    .dropdown-link {
+        color: #222;
+        text-decoration: none;
+        padding: 12px 20px;
+        font-size: 1rem;
+        border-radius: 6px;
+        transition: background 0.2s, color 0.2s;
+        white-space: nowrap;
+    }
+    .dropdown-link:hover {
+        background: #e0e7ff;
+        color: #6366f1;
+    }
+    .thumbnail-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+        margin-top: 0;
+        justify-content: center;
+        align-items: stretch;
+    }
+    @media (min-width: 768px) {
+        .thumbnail-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+    @media (min-width: 1024px) {
+        .thumbnail-grid {
+            grid-template-columns: repeat(5, 1fr);
+        }
+    }
+    .center-thumbnails {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .center-grid {
+        margin-left: auto;
+        margin-right: auto;
+        width: fit-content;
+    }
+    .thumbnail-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 160px;
+        background: #e0e7ff;
+        color: #222;
+        border-radius: 16px;
+        font-size: 1.3rem;
+        font-weight: 700;
+        text-decoration: none;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+        transition: background 0.2s, color 0.2s;
+        border: 2px solid #b6b6b6;
+        text-align: center;
+        line-height: 1.2;
+    }
+    .thumbnail-btn:hover {
+        background: #6366f1;
+        color: #fff;
+        border-color: #6366f1;
+    }
+    .book-box {
+        background: rgba(255,255,255,0.7);
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        margin-bottom: 32px;
+        padding: 24px 16px;
+    }
+    .main-wrapper {
+        max-width: 700px;
+        margin: 40px auto 0 auto;
+        padding: 0 16px;
+        /* No background or box-shadow */
+    }
+    .navbar-search {
+        display: flex;
+        align-items: center;
+    }
+    .navbar-search input[type="text"] {
+        padding: 7px 14px;
+        border-radius: 6px;
+        border: 1px solid #d1d5db;
+        font-size: 1rem;
+        outline: none;
+        transition: border 0.2s, box-shadow 0.2s;
+        background: #fff;
+        color: #222;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    }
+    .navbar-search input[type="text"]:focus {
+        border: 1.5px solid #6366f1;
+        box-shadow: 0 2px 8px rgba(99,102,241,0.10);
+    }
+    
+    /* Social Media Styles */
+    .social-media-grid {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 16px;
+        flex-wrap: wrap;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+    
+    .social-btn {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 8px 6px;
+        border-radius: 6px;
+        text-decoration: none;
+        color: #fff;
+        font-weight: 600;
+        font-size: 0.7rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+        border: none;
+        cursor: pointer;
+        min-height: 45px;
+        min-width: 55px;
+    }
+    
+    .social-btn:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    }
+    
+    .social-icon {
+        width: 16px;
+        height: 16px;
+        margin-bottom: 2px;
+    }
+    
+    .social-btn.facebook {
+        background: linear-gradient(135deg, #1877f2, #0d6efd);
+    }
+    
+    .social-btn.facebook:hover {
+        background: linear-gradient(135deg, #0d6efd, #0a58ca);
+    }
+    
+    .social-btn.instagram {
+        background: linear-gradient(135deg, #e4405f, #c13584);
+    }
+    
+    .social-btn.instagram:hover {
+        background: linear-gradient(135deg, #c13584, #a02a6b);
+    }
+    
+    .social-btn.tiktok {
+        background: linear-gradient(135deg, #000000, #25f4ee);
+    }
+    
+    .social-btn.tiktok:hover {
+        background: linear-gradient(135deg, #25f4ee, #fe2c55);
+    }
+    
+    .social-btn.youtube {
+        background: linear-gradient(135deg, #ff0000, #cc0000);
+    }
+    
+    .social-btn.youtube:hover {
+        background: linear-gradient(135deg, #cc0000, #990000);
+    }
+    .nota-xilo {
+        position: absolute;
+        display: block;
+        /* Fondo transparente por defecto */
+        background: rgba(0,0,0,0);
+        transition: background 0.2s;
+        z-index: 2;
+    }
+    .nota-xilo:hover {
+        background: rgba(255, 255, 0, 0.25); /* Sombra amarilla semitransparente */
+        box-shadow: 0 0 16px 8px rgba(255, 255, 0, 0.25);
+        cursor: pointer;
+    }
+    .nota-social {
+        width: 80px;
+        height: auto;
+        transition: transform 0.2s, box-shadow 0.2s;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+        border-radius: 12px;
+        background: transparent;
+    }
+    .nota-social:hover {
+        transform: scale(1.12) translateY(-6px);
+        box-shadow: 0 6px 24px rgba(0,0,0,0.18);
+        z-index: 2;
+    }
+    .boton-grid-img {
+        transition: transform 0.18s, box-shadow 0.18s;
+        cursor: pointer;
+    }
+    .boton-grid-img:hover {
+        transform: scale(0.92) translateY(0);
+        z-index: 2;
+    }
+    /* Scrollbar transparente para la sección de los seis botones grandes */
+
+    /* Para navegadores basados en Webkit (Chrome, Edge, Safari) */
+    div[style*="overflow-x:auto"]::-webkit-scrollbar {
+        height: 12px;
+        background: transparent;
+    }
+    div[style*="overflow-x:auto"]::-webkit-scrollbar-thumb {
+        background: transparent;
+    }
+
+    /* Para Firefox */
+    div[style*="overflow-x:auto"] {
+        scrollbar-color: transparent transparent;
+        scrollbar-width: thin;
+    }
+    </style>
+<script>
+// Permitir scroll horizontal con la rueda del mouse sobre la sección de los seis botones grandes
+window.addEventListener('DOMContentLoaded', function() {
+    const scrollDiv = document.querySelector('div[style*="overflow-x:auto"]');
+    if (scrollDiv) {
+        scrollDiv.addEventListener('wheel', function(e) {
+            if (e.deltaY !== 0) {
+                e.preventDefault();
+                scrollDiv.scrollLeft += e.deltaY;
+            }
+        }, { passive: false });
+    }
+});
+</script>
+</body>
+</html> 
